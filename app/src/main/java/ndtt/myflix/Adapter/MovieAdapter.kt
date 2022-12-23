@@ -40,7 +40,6 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
         holder.binding.tvRD.text = setReleaseDate(movieList[position].release_date)
         holder.binding.ratingBar.rating = (movieList[position].vote_average/2).toFloat()
         holder.binding.tvRating.text = ((movieList[position].vote_average * 10.0).roundToInt() / 10.0).toString()
-        Log.d("thai",(movieList[position].vote_average).toString())
 
         holder.itemView.setOnClickListener {
             if (onClickListener != null) {
