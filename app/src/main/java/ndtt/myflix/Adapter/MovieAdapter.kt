@@ -1,11 +1,13 @@
 package ndtt.myflix.Adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import ndtt.myflix.Models.Results
 import ndtt.myflix.databinding.MovieLayoutBinding
+import kotlin.math.roundToInt
 
 class MovieAdapter : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
     private var movieList = ArrayList<Results>()
@@ -37,14 +39,14 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
         holder.binding.tvTitle.text = movieList[position].title
         holder.binding.tvRD.text = setReleaseDate(movieList[position].release_date)
         holder.binding.ratingBar.rating = (movieList[position].vote_average/2).toFloat()
-        holder.binding.tvRating.text = movieList[position].vote_average.toString()
+        holder.binding.tvRating.text = ((movieList[position].vote_average * 10.0).roundToInt() / 10.0).toString()
+        Log.d("thai",(movieList[position].vote_average).toString())
 
         holder.itemView.setOnClickListener {
             if (onClickListener != null) {
                 onClickListener!!.onClick(position, model)
             }
         }
-
     }
 
     private fun setReleaseDate(releaseDate: String): String{

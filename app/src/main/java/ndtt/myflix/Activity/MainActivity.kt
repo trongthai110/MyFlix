@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
     private fun prepareRecyclerView() {
         movieAdapter = MovieAdapter()
         binding.rcvMain.apply {
-            layoutManager = GridLayoutManager(applicationContext,2)
+            layoutManager = GridLayoutManager(applicationContext,1)
             adapter = movieAdapter
         }
     }
